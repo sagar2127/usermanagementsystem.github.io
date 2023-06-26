@@ -1,0 +1,45 @@
+<%- include('include/header') %>
+
+    <div class="content-start transition  ">
+        <div class="container-fluid dashboard">
+            <div class="content-header">
+                <h1 class="text-center">Notice Section</h1>
+            </div>
+
+            <div class="col-md-8 d-flex justify-content-center align-items-center" style="margin-left: 16%;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center">View Notice</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" accept="/notices">
+                            <div class="row">
+                                <div class="mb-3 col-md-12">
+                                    <label class="form-label">Name</label>
+                                    <input readonly class="form-control" value="<%=notice1.name%>" />
+                                </div>
+
+                                <div class="mb-3 col-md-12">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input readonly class="form-control" value="<%=notice1.subject%>" />
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <label for="subject" class="form-label">Date</label>
+                                    <input class="form-control" value="<%=notice1.date%>" readonly />
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <label for="mainBody" class="form-label">Body</label>
+                                    <textarea readonly class="form-control" rows="6"><%= notice1.content %></textarea>
+                                </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- End Container-->
+        </div>
+
+
+        <%- include('include/footer') %>

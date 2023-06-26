@@ -1,0 +1,93 @@
+<%- include('include/header') %>
+
+
+
+    <!-- Display success message if available -->
+
+    <div class="content-start transition  ">
+        <div class="container-fluid dashboard">
+            <% if (message) { %>
+                <div class="alert alert-<%= message.type %>">
+                    <%= message.message %>
+                </div>
+                <% } %>
+                    <div class="content-header">
+
+                        <h1 class="text-center">Add image</h1>
+                    </div>
+
+                    <div class="col-md-8 d-flex justify-content-center align-items-center" style="margin-left: 16%;">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="text-center">Add Student</h4>
+                            </div>
+                            <div class="card-body">
+                                <form action="/gallery/add" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="caption">Caption:</label>
+                                        <input type="text" class="form-control" id="caption" name="caption" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description:</label>
+                                        <textarea class="form-control" id="description" name="description" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="image">Image:</label>
+                                        <input type="file" class="form-control-file" id="image" name="image" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+        </div>
+        <!-- End Container-->
+    </div>
+
+    <!-- Image Gallery -->
+    <div class="content-start transition  ">
+        <div class="container-fluid dashboard">
+            <% if (message) { %>
+                <div class="alert alert-<%= message.type %>">
+                    <%= message.message %>
+                </div>
+                <% } %>
+                    <div class="content-header">
+
+                        <h1 class="text-center">Add image</h1>
+                    </div>
+
+                    <div class="col-md-8 d-flex justify-content-center align-items-center" style="margin-left: 16%;">
+                        <div class="card">
+                            <h2>Image Gallery</h2>
+                            <div class="row">
+                                <% images.forEach(function(image) { %>
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card">
+                                            <img src="gallery/<%= image.image %>" class="card-img-top" alt="<%= image.caption %>">
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <%= image.caption %>
+                                                </h5>
+                                                <p class="card-text">
+                                                    <%= image.description %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+
+
+    </div>
+    <!-- End Container-->
+    </div>
+
+    </div>
+
+    <%- include('include/footer') %>

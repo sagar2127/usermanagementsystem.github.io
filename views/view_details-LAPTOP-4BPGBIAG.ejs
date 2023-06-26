@@ -1,0 +1,74 @@
+<%- include('include/header') %>
+
+    <div class="content-start transition">
+        <div class="container-fluid dashboard">
+            <div class="content-header">
+                <h4>Hi,
+                    <%= student.firstName %>
+                </h4>
+                <p>View </p>
+            </div>
+
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-start align-items-sm-center  ">
+                            <img src="<%=process.env.WEB_URL%>/photo/<%=student._id%>" alt="user-avatar" class="d-block rounded" height="200px" width="200px" id="uploadedAvatar" />
+                            <div class="button-wrapper">
+
+                                <i class="bx bx-upload d-block d-sm-none"></i>
+                                <input readonly type="file" id="upload" class="account-file-input readonly" hidden accept="image/png, image/jpeg" />
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <form method="POST" accept="my-profile.html" action="/view/<%=student._id%>">
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">First Name</label>
+                                    <input readonly class="form-control" type="text" value="<%=student.firstName%>" readonly/>
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Username</label>
+                                    <input readonly class="form-control" type="text" value="<%=student.username%>" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">E-mail</label>
+                                    <input readonly class="form-control" type="text" value="<%=student.email%>" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Phone Number</label>
+                                    <input readonly type="text" class="form-control" value="<%=student.phone%>" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Gender</label>
+                                    <input readonly class="form-control" type="text" value="<%=student.gender%>" />
+                                </div>
+
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Date of Birth</label>
+                                    <input readonly class="form-control" type="text" value="<%=moment().format('DD MMMM YYYY')%>" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Wing</label>
+                                    <input readonly class="form-control" type="text" value="<%= student.wing%>" />
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label class="form-label">Password</label>
+                                    <input readonly type="text" class="form-control" value="<%=student.password%>" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('include/footer') %>

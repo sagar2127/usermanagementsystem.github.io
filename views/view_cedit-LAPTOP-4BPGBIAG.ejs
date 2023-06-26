@@ -1,0 +1,72 @@
+<%- include('include/header') %>
+    <div class="content-start transition">
+        <div class="container-fluid dashboard">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <% if(message) { %>
+                            <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <strong><%= message.message %></strong>
+                            </div>
+                            <% } %>
+                                <div class="card-header">
+                                    <h4>View cadits</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <% if(student != ''){ %>
+                                            <table class="table table-striped text-center my-4" id="my-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Id</th>
+                                                        <th scope="col">Image</th>
+                                                        <th scope="col">Username</th>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Wing</th>
+                                                        <th scope="col">Password</th>
+                                                        <th scope="col">Action</th>
+                                                        <th scope="col">View details</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% student.forEach((row,index)=>{%>
+                                                        <tr>
+                                                            <td scope="row">
+                                                                <%= index %>
+                                                            </td>
+                                                            <td><img src="http://localhost:5000/photo/<%=row._id%>" width="100" height="100" class="img-thumbnail"></td>
+                                                            <td>
+                                                                <%=row.username%>
+                                                            </td>
+                                                            <td>
+                                                                <%=row.firstName%>
+                                                            </td>
+                                                            <td>
+                                                                <%=row.wing%>
+                                                            </td>
+                                                            <td>
+                                                                <%=row.password%>
+                                                            </td>
+                                                            <td>
+                                                                <a href="/edit/<%=row._id%>" class="text-success"><i class='bx bxs-edit'></i></a>
+                                                                <a href="/delete/<%=row._id%>" class="text-danger"><i class='bx bx-trash'></i></a>
+                                                            </td>
+                                                            <td><a href="/view_details/<%=row._id%>" class="btn btn-primary">View Details</a></td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <a href="/download-student-details" class="btn btn-primary">Download Student Details as PDF</a>
+                                            <!-- Added download button -->
+                                            <% } else { %>
+                                                <h1 class="text-center text-secondary mt-5">No user found in the database</h1>
+                                                <% } %>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%- include('include/footer') %>

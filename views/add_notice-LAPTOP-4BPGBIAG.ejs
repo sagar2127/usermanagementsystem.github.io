@@ -1,0 +1,49 @@
+<%- include('include/header') %>
+
+    <div class="content-start transition  ">
+        <div class="container-fluid dashboard">
+            <div class="content-header">
+                <h1 class="text-center">Notice Section</h1>
+            </div>
+
+            <div class="col-md-8 d-flex justify-content-center align-items-center" style="margin-left: 16%;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center">Add Notice</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" accept="/notices">
+                            <div class="row">
+                                <div class="mb-3 col-md-12">
+                                    <label for="name" class="form-label">Sender</label>
+                                    <input class="form-control" type="text" id="name" name="name" autofocus />
+                                </div>
+
+                                <div class="mb-3 col-md-12">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input class="form-control" type="text" name="subject" id="subject" />
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <label for="subject" class="form-label">Date</label>
+                                    <input class="form-control" type="date" name="date" id="subject" />
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <label for="mainBody" class="form-label">Main Body</label>
+                                    <textarea class="form-control" id="mainBody" name="content" rows="6"></textarea>
+                                </div>
+
+                                <div class="mt-2" style="margin-left: 38%;">
+                                    <button type="submit" class="btn btn-primary me-2 bg-success text-center">Add Notice</button>
+                                </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- End Container-->
+        </div>
+
+
+        <%- include('include/footer') %>

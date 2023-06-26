@@ -1,0 +1,143 @@
+<%- include('include/header') %>
+
+    <div class="content-start transition">
+        <div class="container-fluid dashboard">
+            <div class="content-header">
+                <h1>Admin Dashboard</h1>
+                <p></p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4 d-flex align-items-center">
+                                    <i class="fas fa-inbox icon-home bg-primary text-light"></i>
+                                </div>
+                                <div class="col-8">
+                                    <p>Total Cadit</p>
+                                    <h5>
+                                        <%=  cadetCount %>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4 d-flex align-items-center">
+                                    <i class="fas fa-clipboard-list icon-home bg-success text-light"></i>
+                                </div>
+                                <div class="col-8">
+                                    <p>Army Wing</p>
+                                    <h5>
+                                        <%=armyWingCadetCount%>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4 d-flex align-items-center">
+                                    <i class='bx bxs-ship'></i> <i class="bx bxs-ship  icon-home bg-info text-light"></i>
+                                </div>
+                                <div class="col-8">
+                                    <p>Navy wing</p>
+                                    <h5>
+                                        <%=navyWingCadetCount%>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-4 d-flex align-items-center">
+                                    <i class='bx bxs-plane-take-off'></i> <i class="bx bxs-plane-take-off icon-home bg-warning text-light"></i>
+                                </div>
+                                <div class="col-8">
+                                    <p>Air Force wing</p>
+                                    <h5>
+                                        <%= airWingCadetCount %>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Important notice</h4>
+                        </div>
+                        <div class="card-body">
+                            <% if(message) { %>
+                                <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                                    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    <strong><%= message.message %></strong>
+                                </div>
+                                <% } %>
+                                    <div class="table-responsive">
+                                        <% if(notice != ''){ %>
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr class="text-center">
+                                                        <th scope="col"> Id</th>
+                                                        <th scope="col">Sender</th>
+                                                        <th scope="col">Subject</th>
+                                                        <th scope="col">Action</th>
+                                                        <th scope="col">View Details</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% notice.forEach((row,index)=>{%>
+                                                        <tr class="text-center">
+                                                            <th scope="row">
+                                                                <%= index %>
+                                                            </th>
+                                                            <td scope="row">
+                                                                <%= row.name %>
+                                                            </td>
+                                                            <td scope="row">
+                                                                <%= row.subject %>
+                                                            </td>
+                                                            <td scope="row">
+                                                                <a href="/edit1/<%=row._id%>" class="text-success"><i class='bx bxs-edit'></i></a>
+                                                                <a href="/delete1/<%=row._id%>" class="text-danger"><i class='bx bx-trash' ></i></a>
+                                                            </td>
+                                                            <td><a href="/view_notice/<%=row._id%>" class="btn btn-primary">View Details</a></td>
+                                                        </tr>
+                                                        <% }) %>
+                                                </tbody>
+                                            </table>
+                                            <% }else{ %>
+                                                <h1 class="text-center text-secondary mt-5">no user Found in the database</h1>
+                                                <% } %>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <%- include('include/footer') %>

@@ -1,0 +1,86 @@
+<%- include('include/header') %>
+
+
+    <div class="content-start transition  ">
+        <div class="container-fluid dashboard">
+            <div class="content-header">
+                <h1 class="text-center">Edit Student Page</h1>
+            </div>
+
+            <div class="col-md-8 d-flex justify-content-center align-items-center" style="margin-left: 16%;">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center">Edit Student</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/edit/<%=student._id%>" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="mb-3 col-md-12">
+                                    <label for="firstName" class="form-label">Full Name</label>
+                                    <input class="form-control" type="text" id="firstName" name="firstName" value="<%= student.firstName%>" autofocus />
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input class="form-control" type="text" id="email" name="email" placeholder="xyz@example.com" value="<%= student.email%>" />
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <label for="organization" class="form-label">Phone Number</label>
+                                    <input type="number" class="form-control" id="organization" name="phone" value="<%= student.phone%>" />
+                                </div>
+
+                                <div class="mb-3 col-md-12">
+                                    <label for="dob" class="form-label">Enrollment Number</label>
+                                    <input class="form-control" type="number" id="firstName" name="username" value="<%= student.username%>" />
+                                </div>
+
+                                <div class="mb-3 col-md-12">
+                                    <label for="dob" class="form-label">Date of Birth</label>
+                                    <input class="form-control" type="date" name="dob" id="lastName" value="<%= student.dob%>" />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="selectOption" class="form-label">Gender</label>
+                                    <select class="form-select" id="selectOption" name="gender">
+                                        <option selected value="">Select an option</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="selectOption" class="form-label">Wing</label>
+                                    <select class="form-select" id="selectOption" name="wing">
+                                        <option selected>Select an option</option>
+                                        <option value="Air-Wing">Air-Wing</option>
+                                        <option value="Army-Wing">Amry-wing</option>
+                                        <option value="Navy-Wing">Navy-Wing</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-12">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input class="form-control" type="password" id="email" name="password" value="<%= student.password%>" />
+                                </div>
+
+
+                                <div class="mb-3 col-md-12">
+                                    <label for="image" class="form-label">Upload Image</label>
+                                    <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                                    <img src="<%=process.env.WEB_URL%>/photo/<%=student._id%>" width="100" class="img-thumbnail mt-1">
+                                    <input type="hidden" name="old_image" value="<%= student.image%>">
+                                </div>
+
+                                <div class="mt-2" style="margin-left: 38%;">
+                                    <button type="submit" class="btn btn-primary me-2 bg-success text-center">Registration</button>
+                                </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- End Container-->
+        </div>
+
+
+        <%- include('include/footer') %>

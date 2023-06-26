@@ -1,0 +1,49 @@
+<%- include('include/header') %>
+    <div class="container">
+        <h1>Quiz</h1>
+        <div class="content-start transition  ">
+            <div class="container-fluid dashboard">
+
+                <div class="col-md-8 d-flex justify-content-center align-items-center" style="margin-left: 16%;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="text-center">Start Quiz</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" action="/submit-quiz">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name:</label>
+                                    <input type="text" class="form-control" id="name" name="username" required>
+                                </div>
+                                <% for(let i=0; i<quiz.questions.length; i++) { %>
+                                    <div class="card mt-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Question
+                                                <%= i+1 %>
+                                            </h5>
+                                            <p class="card-text">
+                                                <%= quiz.questions[i].question %>
+                                            </p>
+                                            <% for(let j=0; j<quiz.questions[i].options.length; j++) { %>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="answer<%= i %>" id="answer<%= i %>-<%= j %>" value="<%= quiz.questions[i].options[j] %>">
+                                                    <label class="form-check-label" for="answer<%= i %>-<%= j %>">
+                                                        <%= quiz.questions[i].options[j] %>
+                                                    </label>
+                                                </div>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- End Container-->
+        </div>
+    </div>
+    <%- include('/include/footer') %>
